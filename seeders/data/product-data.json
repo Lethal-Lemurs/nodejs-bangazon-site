@@ -1,0 +1,58 @@
+{
+  "products": [
+    {
+      "name": "Ball",
+      "type_id": 1,
+      "price": 500,
+      "quantity": 10,
+      "date_added": "2015-08-14",
+      "description": "Its round and rolls",
+      "user_id": 2
+    },
+    {
+      "name": "Car",
+      "type_id": 3,
+      "price": 90000000,
+      "quantity": 8,
+      "date_added": "2016-08-05",
+      "description": "Its an automobile and rolls and honks",
+      "user_id": 5
+    },
+    {
+      "name": "Shoe",
+      "type_id": 2,
+      "price": 7000,
+      "quantity": 50,
+      "date_added": "2017-09-24",
+      "description": "You wear them and walk",
+      "user_id": 2
+    },
+    {
+      "name": "Computer",
+      "type_id": 4,
+      "price": 1500,
+      "quantity": 1000,
+      "date_added": "2014-07-14",
+      "description": "You check facebook and email with it",
+      "user_id": 1
+    },
+    {
+      "name": "microscope",
+      "type_id": 5,
+      "price": 5000000,
+      "quantity": 180,
+      "date_added": "2016-09-14",
+      "description": "You look through it",
+      "user_id": 3
+    },
+    {
+      "name": "gameboy",
+      "type_id": 4,
+      "price": 7500,
+      "quantity": 2,
+      "date_added": "1999-10-14",
+      "description": "You play video games",
+      "user_id": 2
+    }
+  ]
+}

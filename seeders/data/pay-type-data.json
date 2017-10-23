@@ -1,0 +1,34 @@
+{
+  "pay_types": [
+    {
+      "name": "Visa",
+      "user_id": 1,
+      "account": 554,
+      "active_inactive":true 
+    },
+    {
+      "name": "Discover",
+      "user_id": 2,
+      "account": 789,
+      "active_inactive":true 
+    },
+    {
+      "name": "Master Card",
+      "user_id": 3,
+      "account": 666,
+      "active_inactive":true 
+    },
+    {
+      "name": "American Express",
+      "user_id": 4,
+      "account": 66678,
+      "active_inactive":true 
+    },
+    {
+      "name": "BitCoinz",
+      "user_id": 5,
+      "account": 1231,
+      "active_inactive":true 
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "users": [
+    {
+      "first_name": "Dude",
+      "last_name": "Guy",
+      "username": "duderG",
+      "email": "dudeGuy@hotmail.com",
+      "password": "1234"
+    },
+    {
+      "first_name": "Frank",
+      "last_name": "Reynolds",
+      "username": "oshKosh",
+      "email": "hezbolah@aol.com",
+      "password": "1234"
+    },
+    {
+      "first_name": "Bernard",
+      "last_name": "Osyrus",
+      "username": "BO2017",
+      "email": "thehotstuff420@gmail.com",
+      "password": "1234"
+    },
+    {
+      "first_name": "Laura",
+      "last_name": "Davis",
+      "username": "flowersandshit",
+      "email": "notasoccermom420@gmail.com",
+      "password": "1234"
+    },
+    {
+      "first_name": "Jessie",
+      "last_name": "Ventura",
+      "username": "navysealguy420",
+      "email": "hotshotfucka@gmail.com",
+      "password": "1234"
+    }
+  ]
+}
