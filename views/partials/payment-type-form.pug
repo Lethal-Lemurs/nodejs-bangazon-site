@@ -1,14 +1,8 @@
 form#addpay(name="addpay" method="post" action="/addpaytype")
-  label(for="pay_type") Payment Type
-  input.text(id="first_name" name="first_name" type="text")
-  label(for="last_name") Last name
-  input.text(name="last_name" type="text")
-  label(for="username") Username
-  input.text(name="username" type="text")
-  label(for="email") Email Address
-  input.text(name="email" type="text")
-  label(for="password") Password
-  input(name="password" type="password")
-  label(for="confirmation") Confirmation
-  input(name="confirmation" type="password")
-  input.btn(type="submit" value="Add Pay Type")
+  label(for="name") Payment Type
+  input.text(id="pay_type" name="name" type="text")
+  label(for="account") Last name
+  input.text(name="account" type="number")
+  //-We will have to send true back with the active part for the function addpaytype. active_inactive
+  //-Can refactor Payment Type to be a dropdown later after MVP unless it's needed now. Just let me know
+  //-Sam Staff
