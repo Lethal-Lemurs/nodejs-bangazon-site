@@ -9,6 +9,15 @@ module.exports = function(sequelize, DataTypes) {
   }, {timestamps: false});
 
   User.associate= (models) => {
+    User.hasMany(models.Product);
+  };
+
+  User.associate= (models) => {
+    User.hasMany(models.Pay_type);
+  };
+
+  User.associate= (models) => {
+    User.hasMany(models.Order);
   };
 
   return User;

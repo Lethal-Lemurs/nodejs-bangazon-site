@@ -1,0 +1,19 @@
+{
+  "product_types": [
+    {
+      "name": "Toy"
+    },
+    {
+      "name": "Clothing"
+    },
+    {
+      "name": "Automobile"
+    },
+    {
+      "name": "Electronics"
+    },
+    {
+      "name": "Science"
+    }
+  ]
+}
