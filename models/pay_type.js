@@ -11,10 +11,10 @@ module.exports = (sequelize, DataTypes) => {
     Pay_type.belongsTo(models.User, {
       onDelete: 'CASCADE'
     });
+
+    Pay_type.belongsTo(models.Order);
+    
   };
   
-  Pay_type.associate = (models) => {
-    Pay_type.belongsTo(models.Order);
-  };
   return Pay_type;
 };
