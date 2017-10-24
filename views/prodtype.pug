@@ -8,9 +8,10 @@ block content
   h3 Product Types
 
   ul
-    each prodtype in prodTypeData
-      a #{prodtype.name}
-      if prodtype.Productstype_id = prodtype.id
-        p #{prodtype.Productsname}
+    each prodtype in prodTypeNameArr
+      h4 #{prodtype}:
+        each prod in prodData
+          if prod.name = prodtype
+            li #{prod['Products.name']}
       br
 
