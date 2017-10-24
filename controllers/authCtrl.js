@@ -18,7 +18,6 @@ module.exports.register = (req, res, next) => {
       // Go ahead and login the new user once they are signed up
       req.logIn(user, (err) => {
         if (err) { return next(err); }
-        //need user id from this point
         console.log("authenticated. Rerouting to welcome page!" );
         // Save a msg in a cookie whose value will be added to req
         // using https://www.npmjs.com/package/express-flash-2 docs, but installed express-flash
@@ -49,7 +48,6 @@ module.exports.login = (req, res, next) => {
 
     req.logIn(user, err => {
       if (err) { return next(err) }
-      //need user id from this point
       console.log("authenticated. Rerouting to welcome!", user);
       req.flash('welcomeBackMsg',`Welcome back, `);
       res.redirect('/welcome');
@@ -68,4 +66,3 @@ module.exports.logout = (req, res) => {
   });
 };
 
-//Sam Staff. We need the user id for some functionality.

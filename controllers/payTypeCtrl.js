@@ -8,7 +8,7 @@ module.exports.displayPayForm = (req, res, next) => {
 }
 
 //Sam Staff. This function will enable the payment type in the payment type form partial. It will 
-//render or redirect from the profile view
+//render or redirect from the profile view. Use req.session.passport.user to grab the current user.
 module.exports.postPayType = (req, res, next) => {
   const { Pay_type, User } = req.app.get('models');
   Pay_type.create({
