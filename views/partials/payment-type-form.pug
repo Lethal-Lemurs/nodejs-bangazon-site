@@ -1,0 +1,10 @@
+form#addpay(name="addpay" method="post" action="/addPayType")
+  label(for="name") Payment Type:
+  input.text(id="pay_type" name="name" type="text")
+  br
+  label(for="account") Account Number:
+  input.number(name="account" type="number")
+  br
+  input.btn(type="submit" value="Add Pay Type")
+  //-Can refactor Payment Type to be a dropdown later after MVP unless it's needed now. Just let me know
+  //-Sam Staff
