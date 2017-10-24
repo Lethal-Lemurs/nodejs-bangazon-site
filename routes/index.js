@@ -10,6 +10,7 @@ router.get('/', (req, res, next) => {
 
 // pipe all other requests through the route modules
 router.use(require('./authRoute'));
+
 // router.use(require('./foo'));
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated())
@@ -20,5 +21,7 @@ router.use(isLoggedIn);
 //Joe and Me took this from authRoute so that we can use isLoggedIn as a gatekeeper for private routes. 
 //private routes
 // router.get('/welcome', welcome);
+router.use(require('./productTypeRoute'));
 router.use(require('./paymentType'));
 module.exports = router;
+
