@@ -7,7 +7,6 @@ html(lang="en")
     title Create Product
     include ./partials/nav 
   body
-    h1 DUSTIN
     form(action="/postProduct", method="POST")
       label(for="date_added") Date Added:
       input(type="date", name="date_added") 
@@ -27,7 +26,7 @@ html(lang="en")
       label(for="type_id") Product Type:
       select(class="selectval", name="selectval")
         //- option(value="-select-" disabled)
-        each product_type in Product_types
-          option(value=Product_type.id) #{Product_type.name}
+        each product_type in product_types
+          option(value=product_type.id) #{product_type.name}
       br    
       button#button(type="submit") New Product
