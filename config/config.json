@@ -1,6 +1,8 @@
 {
   "development": {
-    "database": "YOUR DB NAME",
+    "database": "bangazonmarket",
+    "username": "postgres",
+    "password": "iforget",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
