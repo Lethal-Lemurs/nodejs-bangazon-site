@@ -1,0 +1,12 @@
+//- extends index.pug
+include ./partials/nav
+block content
+  h1 Product: #{product.name}
+  if message
+    h2= message
+  p Description: #{product.description}
+  p Quantity: #{product.quantity} units
+  //- ppu is price per unity
+  p Price: $#{product.price}
+  - console.log("cons PRODUCT!!!!!!!!", product);
+  button(type="submit") Add To Order

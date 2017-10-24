@@ -1,6 +1,6 @@
 {
   "development": {
-    "database": "YOUR DB NAME",
+    "database": "bangazonmarket",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
