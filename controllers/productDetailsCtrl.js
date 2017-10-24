@@ -5,10 +5,9 @@ module.exports.getOneProduct = (req, res, next) => {
   Product.findOne({where: {id: req.params.id} })
   .then( (prodData) => {
       const {dataValues:product} = prodData;
-      res.render('product-details', {product});  
+      res.render('product-details', {product});
   })
   .catch( (err) => {
-    console.log('error!')
     next(err);
   });
 };
