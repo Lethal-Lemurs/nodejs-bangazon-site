@@ -12,17 +12,14 @@ module.exports = (sequelize, DataTypes) => {
   
   Product.associate = (models) => {
     Product.belongsTo(models.User, {
+      foreignKey: 'id',
       onDelete: 'CASCADE'
     });
-  };
-
-  Product.associate = (models) =>{
-    Product.belongsTo(models.Product_type, {
-      onDelete: 'CASCADE'
+    
+    Product.hasOne(models.Product_type, {
+      foreignKey: 'id',         
     });
-  };
-
-  Product.associate = function(models) {
+    
     Product.belongsToMany(models.Order, {
       foreignKey: 'id',
       as: 'Order_Product',

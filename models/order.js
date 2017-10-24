@@ -10,13 +10,9 @@ module.exports = (sequelize, DataTypes) => {
     Order.belongsTo(models.User, {
       onDelete: 'CASCADE'
     });
-  };
 
-  Order.associate = (models) => {
     Order.hasOne(models.Pay_type);
-  };
-
-  Order.associate = function(models) {
+    
     Order.belongsToMany(models.Product, {
       foreignKey: 'id',
       as: 'Order_Product',

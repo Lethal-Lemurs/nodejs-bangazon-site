@@ -1,0 +1,16 @@
+extends index.pug
+
+
+
+block content
+  //- include partials/nav.pug
+  
+  h3 Product Types
+
+  ul
+    each prodtype in prodTypeData
+      a #{prodtype.name}
+      if prodtype.Productstype_id = prodtype.id
+        p #{prodtype.Productsname}
+      br
+
