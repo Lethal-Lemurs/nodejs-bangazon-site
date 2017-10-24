@@ -1,4 +1,6 @@
 'use strict';
+//need user id
+
 //PRIVATE ROUTE
 //Sam Staff. This displays the initial form.
 module.exports.displayPayForm = (req, res, next) => {
@@ -8,11 +10,12 @@ module.exports.displayPayForm = (req, res, next) => {
 //Sam Staff. This function will enable the payment type in the payment type form partial. It will 
 //render or redirect from the profile view
 module.exports.postPayType = (req, res, next) => {
-  console.log(`postPayType getting called in ctrl`);
-  const { Pay_type } = req.app.get('models');
+  const { Pay_type, User } = req.app.get('models');
   Pay_type.create({
     name: req.body.name,
-    account: req.body.account
+    user_id: req.session.passport.user.id,
+    account: req.body.account,
+    active_inactive: true
   })
   .then( () => {
     res.render('add-pay.pug', {message: `${req.body.name} payment method added to your account!`})//redirect to the profile or back to addPayment pug?
@@ -21,4 +24,3 @@ module.exports.postPayType = (req, res, next) => {
     console.log(`Error in postPayType`, err);
   });
 };
-
