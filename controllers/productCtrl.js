@@ -12,8 +12,19 @@ module.exports.getProducts = (req, res, next) => {
 };
 
 module.exports.displayNewProductForm = (req, res, next) => {
-    res.render('create-product');
+  const { Product_type } = req.app.get('models');
+  Product_type.findAll()
+  .then( (product_types) => {
+    res.render('create-product', {
+      product_types
+    });
+  })
+  .catch( (err) => {
+    next(err);
+  });  
 };
+
+
 
 module.exports.postProduct = (req, res, next) => {
   const { Product } = req.app.get('models');
@@ -22,8 +33,8 @@ module.exports.postProduct = (req, res, next) => {
     name: req.body.name,
     description: req.body.description,
     price: req.body.price,
-    quantity: req.body.quantity
-    // type_id: req.body.selectval
+    quantity: req.body.quantity,
+    type_id: req.body.selectval
   })
   .then( () => {
     res.redirect('welcome');

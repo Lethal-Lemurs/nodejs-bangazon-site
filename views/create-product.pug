@@ -5,7 +5,6 @@ html(lang="en")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     meta(http-equiv="X-UA-Compatible", content="ie=edge")
     title Create Product
-    script(src='/javascripts/main.js')
     include ./partials/nav 
   body
     h1 DUSTIN
@@ -25,10 +24,10 @@ html(lang="en")
       label(for="quantity") Quantity:
       input(type="integer", name="quantity")
       br
-      //- label(for="type_id") Product Type:
-      //- select(class="selectval", name="selectval")
-      //-   //- option(value="-select-" disabled)
-      //-   each product_type in Product_types
-      //-     option(value=Product_type.id) #{Product_type.name}
-      //- br    
+      label(for="type_id") Product Type:
+      select(class="selectval", name="selectval")
+        //- option(value="-select-" disabled)
+        each product_type in Product_types
+          option(value=Product_type.id) #{Product_type.name}
+      br    
       button#button(type="submit") New Product
