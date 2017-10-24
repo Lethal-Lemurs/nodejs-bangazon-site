@@ -1,8 +1,10 @@
 form#addpay(name="addpay" method="post" action="/postPayType")
-  label(for="name") Payment Type
+  label(for="name") Payment Type:
   input.text(id="pay_type" name="name" type="text")
-  label(for="account") Last name
-  input.text(name="account" type="number")
+  br
+  label(for="account") Account Number:
+  input.number(name="account" type="number")
+  br
   input.btn(type="submit" value="Add Pay Type")
   //-We will have to send true back with the active part for the function addpaytype. active_inactive
   //-Can refactor Payment Type to be a dropdown later after MVP unless it's needed now. Just let me know

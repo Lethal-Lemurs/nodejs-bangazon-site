@@ -3,8 +3,10 @@
 const { Router } = require('express');
 const router = Router();
 
-const { postPayType } = require('../controllers/payTypeCtrl');
+const { postPayType, displayPayForm } = require('../controllers/payTypeCtrl');
 
-router.get('/addPayType', postPayType);
+//tied to payment-type-form.pug partial
+router.get('/addPayType', displayPayForm);
+router.post('/addPayType', postPayType);
 
 module.exports = router;
