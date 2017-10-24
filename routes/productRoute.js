@@ -3,9 +3,11 @@
 const { Router } = require('express');
 const router = Router();
 
-const { getProducts, postProduct } = require('../controllers/dproductCtrl');
+const { getProducts, displayNewProductForm, postProduct } = require('../controllers/productCtrl');
 
 router.get('/products', getProducts);
-router.post('/postProduct', postProduct);
+// router.get('/product-details/:id', getOneProduct);
+router.get('/postProduct', displayNewProductForm);
+// router.post('/postProduct', postProduct);
 
 module.exports = router;

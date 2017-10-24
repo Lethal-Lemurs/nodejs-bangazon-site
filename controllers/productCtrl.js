@@ -1,31 +1,32 @@
-'use strict'
+'use strict';
 
-module.exports.displayNewProductForm = (req, res, next) => {
+module.exports.getProducts = (req, res, next) => {
   const { Product } = req.app.get('models');
   Product.findAll()
   .then( (products) => {
-    res.render('create-product', {
-      products
-    });
+    res.render('products', { products });
   })
   .catch( (err) => {
     next(err);
   });
 };
 
+module.exports.displayNewProductForm = (req, res, next) => {
+    res.render('create-product');
+};
+
 module.exports.postProduct = (req, res, next) => {
   const { Product } = req.app.get('models');
   Product.create({
+    date_added: new Date(),
     name: req.body.name,
-    type_id: req.body.type_id,
-    price: req.body.price,
-    quantity: req.body.quantity,
-    date_added: req.body.date_added,
     description: req.body.description,
-    user_id: req.body.user_id
+    price: req.body.price,
+    quantity: req.body.quantity
+    // type_id: req.body.selectval
   })
   .then( () => {
-    res.redirect('products');
+    res.redirect('welcome');
   })
   .catch( (err) => {
     console.log(err);    
