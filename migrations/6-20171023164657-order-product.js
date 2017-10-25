@@ -2,7 +2,7 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Order_Product', {
+    return queryInterface.createTable('Order_Products', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -11,7 +11,7 @@ module.exports = {
       },
       order_id: {
         type: Sequelize.INTEGER,
-        allowNull: false,
+        allowNull: true,
         references: {
           // Sequelize is referencing the table here, which it capitalizes by default, so use the plural of User
           model: 'Orders',
@@ -33,6 +33,6 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Order_Product');
+    return queryInterface.dropTable('Order_Products');
   }
 };
