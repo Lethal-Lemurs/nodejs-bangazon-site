@@ -2,3 +2,21 @@ if session.passport
   span #{session.passport.user.username}
   form(method="POST")
     button(type="submit" formaction="/logout") logout
+
+    ul
+      |
+      |
+      a(href='') Product Categories
+      |
+      |
+      a(href="/postProduct") Sell Product
+      |
+      |
+      a(href='userProfile') Profile
+      |
+      |
+      a(href='viewCart') View Cart
+      |
+      |
+      a(href="/products") Products
+

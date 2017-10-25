@@ -3,6 +3,8 @@
 const { Router } = require('express');
 const router = Router();
 
+const { welcome } = require('../controllers/authCtrl');
+
 router.get('/', (req, res, next) => {
   res.render('index');
 });
@@ -10,6 +12,8 @@ router.get('/', (req, res, next) => {
 
 // pipe all other requests through the route modules
 router.use(require('./authRoute'));
+
+
 // router.use(require('./foo'));
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated())
@@ -17,9 +21,12 @@ function isLoggedIn(req, res, next) {
   res.redirect('/login');
 }
 router.use(isLoggedIn);
-//private routes
-// router.get('/welcome', welcome);
-router.use(require('./productDetailsRoute'));
 //Joe and Me took this from authRoute so that we can use isLoggedIn as a gatekeeper for private routes. 
+//private routes
+router.get('/welcome', welcome);
+router.use(require('./productTypeRoute'));
+router.use(require('./paymentType'));
+router.use(require('./productRoute'));
+router.use(require('./productDetailsRoute'));
 
 module.exports = router;
