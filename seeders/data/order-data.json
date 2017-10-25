@@ -1,0 +1,10 @@
+{
+  "orders": [
+    {
+      "id": 1,
+      "user_id": 6,
+      "payType_id": null,
+      "open_closed": true
+    }
+  ]
+}
