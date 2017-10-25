@@ -1,0 +1,13 @@
+
+
+
+block content
+  //- include partials/nav.pug
+  
+  h3 Products
+
+  ul
+    each product in products
+      if product.name === input.search
+        a #{product.name}
+        br
