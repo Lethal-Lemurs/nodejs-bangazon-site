@@ -29,7 +29,7 @@ module.exports.getDeletePayTypes = (req, res, next) => {
   console.log("getdeletepaytypes RUNNING!!!!!")
   const { Pay_type } = req.app.get('models');
   console.log(`id`, req.session.passport.user.id);
-  Pay_type.findAll({
+  Pay_type.findAll({//problem
     where: {
       user_id: req.session.passport.user.id
     }
@@ -41,7 +41,7 @@ module.exports.getDeletePayTypes = (req, res, next) => {
   })
   .catch( (err) => {
     // console.log(`Error in getDeletePayTypes`, err);
-    console.log(`error!!!!!!!!!!!!!!!!!!!!!!!!!`);
+    console.log(`error!!!!!!!!!!!!!!!!!!!!!!!!!`, err);
   });
 };
 

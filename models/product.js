@@ -2,7 +2,7 @@
 module.exports = (sequelize, DataTypes) => {
   var Product = sequelize.define('Product', {
     name: DataTypes.STRING,
-    // type_id: DataTypes.INTEGER,
+    type_id: DataTypes.INTEGER,
     price: DataTypes.INTEGER,
     quantity: DataTypes.INTEGER,
     date_added: DataTypes.DATE,
@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
     });
     
     Product.hasOne(models.Product_type, {
-      foreignKey: 'id'
+      foreignKey: 'id',         
     });
     
     Product.belongsToMany(models.Order, {
