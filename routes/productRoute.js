@@ -3,10 +3,10 @@
 const { Router } = require('express');
 const router = Router();
 
-const { getProducts, displayNewProductForm, postProduct } = require('../controllers/productCtrl');
+const { getProducts, displayNewProductForm, postProduct, getProdById } = require('../controllers/productCtrl');
 
 router.get('/products', getProducts);
-// router.get('/product-details/:id', getOneProduct);
+router.get('/product-details/:id', getProdById);
 router.get('/postProduct', displayNewProductForm);
 router.post('/postProduct', postProduct);
 
