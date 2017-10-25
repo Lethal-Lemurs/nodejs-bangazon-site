@@ -10,7 +10,7 @@ module.exports.displayPayForm = (req, res, next) => {
 //Sam Staff. This function will enable the payment type in the payment type form partial. It will 
 //render or redirect from the profile view. Use req.session.passport.user to grab the current user.
 module.exports.postPayType = (req, res, next) => {
-  const { Pay_type, User } = req.app.get('models');
+  const { Pay_type } = req.app.get('models');
   Pay_type.create({
     name: req.body.name,
     user_id: req.session.passport.user.id,
@@ -22,5 +22,41 @@ module.exports.postPayType = (req, res, next) => {
   })
   .catch( (err) => {
     console.log(`Error in postPayType`, err);
+  });
+};
+
+module.exports.getDeletePayTypes = (req, res, next) => {
+  console.log("getdeletepaytypes RUNNING!!!!!")
+  const { Pay_type } = req.app.get('models');
+  console.log(`id`, req.session.passport.user.id);
+  Pay_type.findAll({
+    where: {
+      user_id: req.session.passport.user.id
+    }
+  })
+  .then( (payTypes) => {
+    console.log(`data from get pay types`, payTypes);
+    console.log(`success!!!!!!!!!!!!!!!!!!!!!!`);
+    res.render('delete-pay.pug', {payTypes});  
+  })
+  .catch( (err) => {
+    // console.log(`Error in getDeletePayTypes`, err);
+    console.log(`error!!!!!!!!!!!!!!!!!!!!!!!!!`);
+  });
+};
+
+module.exports.deletePayType = (req, res, next) => {
+  console.log(`deletePayType called`);
+  const { Pay_type } = req.app.get('models');
+  Pay_type.destroy({
+    where: {
+      id: this.id
+    }//would probably irl be done by other data, maybe name would work if it's user controlled?
+  })
+  .then( () => {
+    res.render('delete-pay.pug', {message: `${this.name} payment method deleted!`})
+  })
+  .catch( (err) => {
+    console.log(`Error in deletePayType`, err);
   });
 };

@@ -2,13 +2,13 @@
 module.exports = (sequelize, DataTypes) => {
   var Product = sequelize.define('Product', {
     name: DataTypes.STRING,
-    type_id: DataTypes.INTEGER,
+    // type_id: DataTypes.INTEGER,
     price: DataTypes.INTEGER,
     quantity: DataTypes.INTEGER,
     date_added: DataTypes.DATE,
     description: DataTypes.STRING,
-    user_id: DataTypes.INTEGER
-  }, {timestamps: false});
+    // user_id: DataTypes.INTEGER
+  }, {underscored:true}, {timestamps: false});
   
   Product.associate = (models) => {
     Product.belongsTo(models.User, {
@@ -17,11 +17,11 @@ module.exports = (sequelize, DataTypes) => {
     });
     
     Product.hasOne(models.Product_type, {
-      foreignKey: 'id',         
+      foreignKey: 'id'
     });
     
     Product.belongsToMany(models.Order, {
-      foreignKey: 'id',
+      foreignKey: 'product_id',
       as: 'Order_Product',
       through: 'OrderProduct',
       onDelete: 'CASCADE'
