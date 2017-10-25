@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    title Create Product
+    include ./partials/nav 
+  body
+    form(action="/postProduct", method="POST")
+      label(for="name") Name:
+      input(type="text", name="name")
+      br
+      label(for="description") Description:
+      input(type="text", name="description")
+      br
+      label(for="price") Price:
+      input(type="integer", name="price")
+      br
+      label(for="quantity") Quantity:
+      input(type="integer", name="quantity")
+      br
+      label(for="type_id") Product Type:
+      select(class="selectval", name="selectval")
+        //- option(value="-select-" disabled)
+        each product_type in product_types
+          option(value=product_type.id) #{product_type.name}
+      br    
+      button#button(type="submit") New Product
