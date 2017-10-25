@@ -4,7 +4,8 @@ module.exports = (sequelize, DataTypes) => {
     // user_id: DataTypes.INTEGER,
     // payType_id: DataTypes.INTEGER,
     open_closed: DataTypes.BOOLEAN
-  }, {underscored:true});
+  }, 
+  {underscored: true, timestamps: false});
    
   Order.associate = (models) => {
     Order.belongsTo(models.User, {
@@ -17,9 +18,8 @@ module.exports = (sequelize, DataTypes) => {
     });
     
     Order.belongsToMany(models.Product, {
-      foreignKey: 'id',
-      as: 'Order_Product',
-      through: 'OrderProduct',
+      through: 'Order_Products',
+      timestamps: false,
       onDelete: 'CASCADE'
     });
   };

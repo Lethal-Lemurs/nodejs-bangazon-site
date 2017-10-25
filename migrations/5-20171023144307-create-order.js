@@ -13,19 +13,12 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       payType_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: true
       },
       open_closed: {
         type: Sequelize.BOOLEAN
       }
-      // createdAt: {
-      //   allowNull: false,
-      //   type: Sequelize.DATE
-      // },
-      // updatedAt: {
-      //   allowNull: false,
-      //   type: Sequelize.DATE
-      // }
     });
   },
   down: (queryInterface, Sequelize) => {

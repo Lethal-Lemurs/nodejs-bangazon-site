@@ -7,8 +7,8 @@ module.exports = (sequelize, DataTypes) => {
     quantity: DataTypes.INTEGER,
     date_added: DataTypes.DATE,
     description: DataTypes.STRING,
-    // user_id: DataTypes.INTEGER
-  }, {underscored:true}, {timestamps: false});
+    user_id: DataTypes.INTEGER
+  }, {underscored: true, timestamps: false});
   
   Product.associate = (models) => {
     Product.belongsTo(models.User, {
@@ -21,9 +21,8 @@ module.exports = (sequelize, DataTypes) => {
     });
     
     Product.belongsToMany(models.Order, {
-      foreignKey: 'product_id',
-      as: 'Order_Product',
-      through: 'OrderProduct',
+      through: 'Order_Products',
+      timestamps: false,
       onDelete: 'CASCADE'
     });
   };
