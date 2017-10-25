@@ -19,7 +19,7 @@ module.exports.getProdById = (req, res, next) => {
     }
    })
    .then( (product) => {
-     res.render('products', { product });
+     res.render('product-details', { product });
    })
 }
 
