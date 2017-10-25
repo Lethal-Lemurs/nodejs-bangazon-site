@@ -1,16 +1,26 @@
 extends index.pug
-
-
-
 block content  
   h2 Product Types
-
+  - let qty = 0;
+  - let count = 0;
   ul
     each prodtype in prodTypeNameArr
-      h3 #{prodtype}
-      each prod in prodData
-        if prod.name === prodtype
-          a(href="") #{prod['Products.name']}
-          br
-      br
-
+      - for (let i = 0; i < prodData.length; i++) {
+      -  if( prodtype === prodData[i].name) {
+      -     qty ++;
+      -   }
+      - }
+        a(href="") #{prodtype} (#{qty})
+        br
+        each prod in prodData
+          if prod.name === prodtype
+            - count ++;
+            - let url = `/product-details/` + prod['Products.id'];
+            a(href=url) ~ #{prod['Products.name']}
+            br
+          if count >= 3
+            - break
+        br
+      - count = 0;  
+      - qty = 0;
+      
