@@ -2,16 +2,15 @@ extends index.pug
 
 
 
-block content
-  //- include partials/nav.pug
-  
-  h3 Product Types
+block content  
+  h2 Product Types
 
   ul
     each prodtype in prodTypeNameArr
-      h4 #{prodtype}:
-        each prod in prodData
-          if prod.name = prodtype
-            li #{prod['Products.name']}
+      h3 #{prodtype}
+      each prod in prodData
+        if prod.name === prodtype
+          a(href="") #{prod['Products.name']}
+          br
       br
 
