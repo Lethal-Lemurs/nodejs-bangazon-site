@@ -1,0 +1,20 @@
+//- extends index.pug
+include ./partials/nav
+block content
+    //- - console.log("PUUUUUUUUUUUGGGGGGGGGGGGGGG", orders)
+    h1 Orders
+      ul
+        each prod in productData
+          p id: #{prod.id}
+          | name: #{prod.name}
+          | price: #{prod.price} 
+          | qty: #{prod.quantity}
+          | desc: #{prod.description}
+    //- if message
+    //-   h2= message
+    //- p Description: #{product.description}
+    //- p Quantity: #{product.quantity} units
+    //- //- ppu is price per unity
+    //- p Price: $#{product.price}
+    //- //- Need to add to Orders
+    //- button(type="submit") Add To Order

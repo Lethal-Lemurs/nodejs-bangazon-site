@@ -18,11 +18,42 @@ module.exports.postToOrder = (req, res, next) => {
   // console.log("ORDERS", Order);
   Order.findOne({where: {user_id: req.session.passport.user.id, open_closed: true}})
   .then((order) => {
-    console.log("order", order);
-    return order.addProduct(req.params.id)
+    if (order == null) {
+      // create order
+      // console.log("order was null!!!!!!!!!!!!!!!!!")
+      Order.create({
+        user_id: req.session.passport.user.id,
+        payType_id: null,
+        open_closed: true
+      })
+      .then((newOrder) => {
+        return newOrder.addProduct(req.params.id)
+      })
+    }
+    else {
+      return order.addProduct(req.params.id)
+    }
+    // console.log("order", order);
   })
-  .then( (orderData) => {
-      res.json(orderData);
+  .then(() => {
+    res.redirect('/orders')
+  })
+  .catch( (err) => {
+    next(err);
+  });
+};
+
+module.exports.getOrders = (req, res, next) => {
+  let ordersData;
+  console.log("orders please!", ordersData)
+  const { Order, Product } = req.app.get('models');
+  Order.findOne({where: {user_id: req.session.passport.user.id, open_closed: true}})
+  .then( (ordersData) => {
+    return ordersData = ordersData.getProducts()
+  })
+  .then ( (productData) => {
+    console.log("What we expect?????????????", productData, ordersData)
+    res.render('orders', { ordersData, productData });
   })
   .catch( (err) => {
     next(err);
