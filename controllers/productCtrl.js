@@ -16,6 +16,18 @@ module.exports.getProducts = (req, res, next) => {
   });
 };
 
+module.exports.getProdById = (req, res, next) => {
+  const { Product } = req.app.get('models');
+  Product.findOne({
+    where: {
+      id: req.params.id
+    }
+   })
+   .then( (product) => {
+     res.render('product-details', { product });
+   })
+}
+
 module.exports.displayNewProductForm = (req, res, next) => {
   const { Product_type } = req.app.get('models');
   Product_type.findAll()

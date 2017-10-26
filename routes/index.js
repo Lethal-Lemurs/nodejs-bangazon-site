@@ -10,8 +10,6 @@ router.get('/', (req, res, next) => {
 });
 //public routes
 
-
-
 // pipe all other requests through the route modules
 router.use(require('./authRoute'));
 
@@ -29,6 +27,6 @@ router.get('/welcome', welcome);
 router.use(require('./productTypeRoute'));
 router.use(require('./paymentType'));
 router.use(require('./productRoute'));
-
+router.use(require('./productDetailsRoute'));
 
 module.exports = router;
