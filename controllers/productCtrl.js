@@ -4,7 +4,18 @@ module.exports.getProducts = (req, res, next) => {
   const { Product } = req.app.get('models');
   Product.findAll()
   .then( (products) => {
-    res.render('products', { products });
+    console.log(req.query)
+    let input = req.query.search;
+    input = input.toLowerCase();
+    let searchProds = [];
+    for(let i = 0; i < products.length; i++){
+      if(products[i].name.toLowerCase() === input) {
+        searchProds.push(products[i])
+      }
+    }
+    res.render('search-product', { 
+      searchProds
+     });
   })
   .catch( (err) => {
     next(err);

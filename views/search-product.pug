@@ -1,0 +1,15 @@
+include ./partials/nav
+
+
+block content
+  //- include partials/nav.pug
+  
+h2 Product Search:
+ul
+  each product in searchProds
+    - let url = `/product-details/` + product['Product.id'];
+    a(href=url) Product: #{product.name}
+    p Description: #{product.description}
+    p Quantity: #{product.quantity} units
+    p Price: $#{product.price}
+    br

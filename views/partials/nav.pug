@@ -18,5 +18,11 @@ if session.passport
       a(href='viewCart') View Cart
       |
       |
-      a(href="/products") Products
+
+if session.passport
+  form(action="/products", method="GET")
+    input(type="text", name="search")
+    button#button(type="submit") Search
+  br
+
 
