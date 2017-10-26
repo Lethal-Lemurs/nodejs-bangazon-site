@@ -50,13 +50,14 @@ module.exports.login = (req, res, next) => {
       if (err) { return next(err) }
       // console.log("authenticated. Rerouting to welcome!", user);
       req.flash('welcomeBackMsg',`Welcome back, `);
-      res.redirect('/product-details/1');
+      res.redirect('/welcome');
     });
   })(req, res, next);
 };
 
 module.exports.welcome = (req, res, next) => {
-  res.render('welcome');
+  let latestProducts = res.locals.products;
+  res.render('welcome', { latestProducts });
 };
 
 // logging out
