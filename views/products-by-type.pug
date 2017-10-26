@@ -1,0 +1,12 @@
+include ./partials/nav
+block content
+
+each product in productDeetz
+  form(action=`/postToOrder/${product['Products.id']}`, method="POST")
+    h1 Product: #{product['Products.name']}
+    if message
+      h2= message
+    p Description: #{product['Products.description']}
+    p Quantity: #{product['Products.quantity']} units
+    p Price: $#{product['Products.price']}
+    button(type="submit") Add To Order

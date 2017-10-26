@@ -6,7 +6,10 @@ if session.passport
     ul
       |
       |
-      a(href='/productTypes') Product Categories
+      select(class="selectType" name="selectType")
+        option(href='/productTypes') Product Categories
+        each prodType in prodTypes
+          option(href='') prodType.name
       |
       |
       a(href="/postProduct") Sell Product
