@@ -7,7 +7,8 @@ block content
 h2 Product Search:
 ul
   each product in searchProds
-    a(href="") Product: #{product.name}
+    - let url = `/product-details/` + product['Product.id'];
+    a(href=url) Product: #{product.name}
     p Description: #{product.description}
     p Quantity: #{product.quantity} units
     p Price: $#{product.price}
