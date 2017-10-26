@@ -88,7 +88,6 @@ const LoginStrategy = new Strategy(
     User.findOne({where: {email}})
     .then( (user) => {
       // console.log('username stuff', user);
-
       if (!user) {
         return done(null, false, {
           message: 'Can\'t find a user with those credentials. Please try again'
