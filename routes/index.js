@@ -21,7 +21,6 @@ function isLoggedIn(req, res, next) {
   res.redirect('/login');
 }
 router.use(isLoggedIn);
-//Joe and Me took this from authRoute so that we can use isLoggedIn as a gatekeeper for private routes. 
 //private routes
 router.get('/welcome', welcome);
 router.use(require('./productTypeRoute'));
