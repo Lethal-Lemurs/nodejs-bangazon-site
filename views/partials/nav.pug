@@ -6,7 +6,13 @@ if session.passport
     ul
       |
       |
-      a(href='/productTypes') Product Categories
+      select(class="selectType" name="selectType" onchange="location = this.value;") 
+        option Select a product category!
+        option(value='/productTypes') Product Categories
+        if locals.prodTypes
+          each prodType in locals.prodTypes
+            -let url = `/getProductsByTypes/` + prodType.name;
+            option(value=url) #{prodType.name}
       |
       |
       a(href="/postProduct") Sell Product

@@ -30,7 +30,7 @@ module.exports.getProdById = (req, res, next) => {
     }
    })
    .then( (product) => {
-     res.render('product-details', { product });
+    res.render('product-details', { product });
    })
 }
 
