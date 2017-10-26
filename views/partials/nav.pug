@@ -20,13 +20,9 @@ if session.passport
       |
 
 if session.passport
-  span #{session.passport.user.username}
-  - var search
   form(action="/products", method="GET")
     input(type="text", name="search")
     button#button(type="submit") Search
-    - search = search
-    - console.log('bitch please', search);
   br
 
 

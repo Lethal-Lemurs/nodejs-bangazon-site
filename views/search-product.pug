@@ -1,13 +1,14 @@
-
+include ./partials/nav
 
 
 block content
   //- include partials/nav.pug
   
-  h3 Products
-
-  ul
-    each product in products
-      if product.name === input.search
-        a #{product.name}
-        br
+h2 Product Search:
+ul
+  each product in searchProds
+    a(href="") Product: #{product.name}
+    p Description: #{product.description}
+    p Quantity: #{product.quantity} units
+    p Price: $#{product.price}
+    br
