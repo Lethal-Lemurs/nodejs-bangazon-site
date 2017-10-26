@@ -48,10 +48,13 @@ module.exports.getProductByTypes = (req, res, next) => {
 };
 
 module.exports.productTypeInNav = (req, res, next) => {
-  const { Product_type, Product } = req.app.get('models');
+  console.log("the function was called");
+  const { Product_type } = req.app.get('models');
   Product_type.findAll({raw: true})
   .then(  (prodTypes) => {
-    res.render('nav', { prodTypes });
+    // console.log("you got em!", prodTypes);
+    req.navDropDown =  prodTypes;
+    next();
   })
   .catch( (err) => {
     next(err);

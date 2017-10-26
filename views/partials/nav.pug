@@ -7,9 +7,10 @@ if session.passport
       |
       |
       select(class="selectType" name="selectType")
+        option Select a product category!
         option(href='/productTypes') Product Categories
-        each prodType in prodTypes
-          option(href='') prodType.name
+        each prodType in navProdTypes
+          option(href='') #{prodType.name}
       |
       |
       a(href="/postProduct") Sell Product
