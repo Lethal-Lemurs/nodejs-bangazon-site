@@ -24,37 +24,32 @@ module.exports.postPayType = (req, res, next) => {
     console.log(`Error in postPayType`, err);
   });
 };
-
+//renders the initial Delete paytypes page with the needed data
 module.exports.getDeletePayTypes = (req, res, next) => {
-  console.log("getdeletepaytypes RUNNING!!!!!")
   const { Pay_type } = req.app.get('models');
   console.log(`id`, req.session.passport.user.id);
-  Pay_type.findAll({//problem
+  Pay_type.findAll({
     where: {
       user_id: req.session.passport.user.id
     }
   })
   .then( (payTypes) => {
-    console.log(`data from get pay types`, payTypes);
-    console.log(`success!!!!!!!!!!!!!!!!!!!!!!`);
     res.render('delete-pay.pug', {payTypes});  
   })
   .catch( (err) => {
-    // console.log(`Error in getDeletePayTypes`, err);
-    console.log(`error!!!!!!!!!!!!!!!!!!!!!!!!!`, err);
+    console.log(`Error in getDeletePayTypes`, err);
   });
 };
-
+//Deletes the paytype related to the user with the appropriate req.params
 module.exports.deletePayType = (req, res, next) => {
-  console.log(`deletePayType called`);
   const { Pay_type } = req.app.get('models');
   Pay_type.destroy({
     where: {
-      id: this.id
-    }//would probably irl be done by other data, maybe name would work if it's user controlled?
+      id: req.params.id
+    }
   })
   .then( () => {
-    res.render('delete-pay.pug', {message: `${this.name} payment method deleted!`})
+    res.redirect('/deletePayType')
   })
   .catch( (err) => {
     console.log(`Error in deletePayType`, err);

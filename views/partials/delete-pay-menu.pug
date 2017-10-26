@@ -1,9 +1,7 @@
-//-TODO: Create a dropdown menu that is populated with the user's payment types.
 //-Function can do an alert prompt that asks for confirmation? stretch
-//-Use each and put the destroy function on a button that is with the thing your deleting. 
-
 ul
   each payType in payTypes
-  li(value=`${payType}`) payType 
-  button(type="submit" action="/deletePayType")
-  br
+    form.deletepay(name="deletepay" method="post" action=`/deletePayType/${payType.id}`)
+      li(value=`payType`) #{payType.name}
+      input.delbtn(type="submit" value="Delete")
+      br

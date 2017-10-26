@@ -9,6 +9,7 @@ const { postPayType, displayPayForm, deletePayType, getDeletePayTypes } = requir
 router.get('/addPayType', displayPayForm);
 router.post('/addPayType', postPayType);
 router.get('/deletePayType', getDeletePayTypes);
-router.delete('/deletePayType', deletePayType);
+router.post('/deletePayType/:id', deletePayType);
+//This works, we tested with Jufe, despite it not being a router.delete
 
 module.exports = router;
