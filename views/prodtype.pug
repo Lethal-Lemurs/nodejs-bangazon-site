@@ -6,11 +6,12 @@ block content
   ul
     each prodtype in prodTypeNameArr
       - for (let i = 0; i < prodData.length; i++) {
-      -  if( prodtype === prodData[i].name) {
+      -  if(prodtype === prodData[i].name) {
       -     qty ++;
       -   }
       - }
-        a(href="") #{prodtype} (#{qty})
+      - let prodTypeUrl = `/getProductsByTypes/` + prodtype
+        a(href=prodTypeUrl) #{prodtype} (#{qty})
         br
         each prod in prodData
           if prod.name === prodtype

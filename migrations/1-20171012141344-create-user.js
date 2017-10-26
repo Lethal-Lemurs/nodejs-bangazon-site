@@ -1,5 +1,5 @@
 'use strict';
-
+//1
 // If using sequelize sync, migrations do not come into play. Just leaving this here if you decide
 // to keep using migrations
 

@@ -1,0 +1,6 @@
+ul
+  each payType in payTypes
+    form.deletepay(name="deletepay" method="post" action=`/deletePayType/${payType.id}`)
+      li(value=`payType`) #{payType.name}
+      input.delbtn(type="submit" value="Delete")
+      br

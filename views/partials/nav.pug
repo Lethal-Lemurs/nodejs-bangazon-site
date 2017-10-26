@@ -6,7 +6,13 @@ if session.passport
     ul
       |
       |
-      a(href='/productTypes') Product Categories
+      select(class="selectType" name="selectType" onchange="location = this.value;") 
+        option Select a product category!
+        option(value='/productTypes') Product Categories
+        if locals.prodTypes
+          each prodType in locals.prodTypes
+            -let url = `/getProductsByTypes/` + prodType.name;
+            option(value=url) #{prodType.name}
       |
       |
       a(href="/postProduct") Sell Product
@@ -18,5 +24,11 @@ if session.passport
       a(href='viewCart') View Cart
       |
       |
-      a(href="/products") Products
+
+if session.passport
+  form(action="/products", method="GET")
+    input(type="text", name="search")
+    button#button(type="submit") Search
+  br
+
 
