@@ -47,16 +47,16 @@ module.exports.getProductByTypes = (req, res, next) => {
   });
 };
 
-module.exports.productTypeInNav = (req, res, next) => {
-  console.log("the function was called");
-  const { Product_type } = req.app.get('models');
-  Product_type.findAll({raw: true})
-  .then(  (prodTypes) => {
-    // console.log("you got em!", prodTypes);
-    req.navDropDown =  prodTypes;
-    next();
-  })
-  .catch( (err) => {
-    next(err);
-  });
-};
+// module.exports.productTypeInNav = (req, res, next) => {
+//   console.log("the function was called");
+//   const { Product_type } = req.app.get('models');
+//   Product_type.findAll({raw: true})
+//   .then(  (prodTypes) => {
+//     // console.log("you got em!", prodTypes);
+//     req.navDropDown =  prodTypes;
+//     next();
+//   })
+//   .catch( (err) => {
+//     next(err);
+//   });
+// };

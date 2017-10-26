@@ -28,6 +28,19 @@ app.use(session({
   saveUninitialized: true
 })); // session secret
 
+// function by glen, taught to glen by jon
+app.use(function(req, res, next) {
+  const { Product_type } = req.app.get('models');
+  Product_type.findAll({raw: true})
+  .then(  (productTypes) => {
+    res.locals.prodTypes =  productTypes;
+    next();
+  })
+  .catch( (err) => {
+    next(err);
+  });
+})
+
 //execute passport strategies file
 require('./config/passport-strat.js');
 app.use(passport.initialize());
@@ -45,6 +58,7 @@ app.use(flash());
 
 // note that this needs to be after the above stuff
 app.use(routes);
+
 
 // Add a 404 error handler
 // Add error handler to pipe all server errors to from the routing middleware

@@ -6,11 +6,13 @@ if session.passport
     ul
       |
       |
-      select(class="selectType" name="selectType")
+      select(class="selectType" name="selectType" onchange="location = this.value;") 
         option Select a product category!
-        option(href='/productTypes') Product Categories
-        each prodType in navProdTypes
-          option(href='') #{prodType.name}
+        option(value='/productTypes') Product Categories
+        if locals.prodTypes
+          each prodType in locals.prodTypes
+            -let url = `/getProductsByTypes/` + prodType.name;
+            option(value=url) #{prodType.name}
       |
       |
       a(href="/postProduct") Sell Product
