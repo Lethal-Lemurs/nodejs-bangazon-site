@@ -1,0 +1,8 @@
+include ./partials/nav
+block content
+  form(method="POST" action=`/putToComplete/${orders.id}?_method=PUT`)
+    h1 Payment Type selection
+    select(class="selectval", name="selectval")
+      each payType in payTypes
+        option(value=payType.id) #{payType.name}  #{payType.account}
+    button(type="submit") Close Order with Payment Type
