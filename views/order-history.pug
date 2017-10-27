@@ -1,0 +1,9 @@
+extends index.pug
+block content
+
+  h2 Order History
+
+  each order in data
+    ul
+      li #{order.id}
+      li #{order.payType_id}

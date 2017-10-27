@@ -1,7 +1,6 @@
 'use strict';
 
 const express = require('express');
-const methodOverride = require('method-override');
 const app = express();
 const passport = require('passport')
 var session = require('express-session');
