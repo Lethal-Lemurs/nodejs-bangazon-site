@@ -1,6 +1,7 @@
 'use strict';
 
 const express = require('express');
+const methodOverride = require('method-override');
 const app = express();
 const passport = require('passport')
 var session = require('express-session');
@@ -54,6 +55,7 @@ app.use( (req, res, next) => {
 });
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(methodOverride('_method'));
 app.use(flash());
 
 // note that this needs to be after the above stuff
