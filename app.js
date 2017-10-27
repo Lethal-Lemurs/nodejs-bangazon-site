@@ -43,6 +43,31 @@ app.use(function(req, res, next) {
   });
 })
 
+// function by Dustin, taught to Dustin by Glen, taught to Glen by Jon
+app.use(function(req, res, next) {
+  const { Product } = req.app.get('models');
+  Product.findAll({raw: true})
+  .then( (products) => {
+    products.sort(function(a, b) {
+      a = new Date(a.date_added);
+      b = new Date(b.date_added);
+      return a>b ? -1 : a<b ? 1 : 0;
+    })
+    if(products.length > 20){
+      let array = [];
+      for(let i = 0; i < 20; i++){
+        array.push(products[i])
+      }
+      products = array;
+    }
+    res.locals.products = products;
+    next();
+  })
+  .catch( (err) => {
+    next(err);
+  });
+})
+
 //execute passport strategies file
 require('./config/passport-strat.js');
 app.use(passport.initialize());
