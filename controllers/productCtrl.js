@@ -32,6 +32,9 @@ module.exports.getProdById = (req, res, next) => {
    .then( (product) => {
     res.render('product-details', { product });
    })
+   .catch( (err) => {
+    next(err);
+  });
 }
 
 module.exports.displayNewProductForm = (req, res, next) => {

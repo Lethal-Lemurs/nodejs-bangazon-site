@@ -9,3 +9,15 @@ block content
       h1 #{messages.welcomeBackMsg} #{session.passport.user.first_name}
       //- This would be more permanent
       //- h1 Welcome back, #{session.passport.user.first_name}
+  
+  .latest-product
+
+  h2 Latest Products
+  ul
+    each product in latestProducts
+      - let url = `/product-details/` + product['Product.id'];
+      a(href=url) Product: #{product.name}
+      p Description: #{product.description}
+      p Quantity: #{product.quantity} units
+      p Price: $#{product.price}
+      br

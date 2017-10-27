@@ -2,6 +2,31 @@ extends index.pug
 
 block content
   h1 User Profile
+
+  each info in userInfo
+    h3 #{info.first_name} #{info.last_name}
+    ul
+      li Username: #{info.username}
+      li Email: #{info.email}
+      if info.phone
+        li Phone: #{info.phone}
+      if info.address  
+        li Address: #{info.address}
+    a(href='/editProfile') Edit Profile
+    |
+    |
+    -break
+
   if message
     h2= message
-  a(href="/add-pay.pug") Add payment options.
+  a(href="/addPayType") Add payment options.
+
+  h3 Payment Types 
+  each info in userInfo
+    if info['Pay_types.active_inactive'] = true
+      form.deletepay(name="deletepay" method="post" action=`/deletePayType/${info['Pay_types.id']}`)
+        ul
+          li Name: #{info['Pay_types.name']}
+          li Account Number: #{info['Pay_types.account']}
+          input.delbtn(type="submit" value="Delete")
+          br

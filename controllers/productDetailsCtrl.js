@@ -1,4 +1,7 @@
 'use strict';
+// Also deals with orders for now...
+
+let currentOrder;
 
 module.exports.removeProduct = (req, res, next) => {
   const { Order, Product } = req.app.get('models');
@@ -36,14 +39,11 @@ module.exports.getOneProduct = (req, res, next) => {
 };
 
 module.exports.postToOrder = (req, res, next) => {
-  // console.log("Getting to Post function!")
   const { Order, Product } = req.app.get('models');
-  // console.log("ORDERS", Order);
   Order.findOne({where: {user_id: req.session.passport.user.id, open_closed: true}})
   .then((order) => {
     if (order == null) {
       // create order
-      // console.log("order was null!!!!!!!!!!!!!!!!!")
       Order.create({
         user_id: req.session.passport.user.id,
         payType_id: null,
@@ -56,7 +56,6 @@ module.exports.postToOrder = (req, res, next) => {
     else {
       return order.addProduct(req.params.id)
     }
-    // console.log("order", order);
   })
   .then(() => {
     res.redirect('/orders')
@@ -67,18 +66,69 @@ module.exports.postToOrder = (req, res, next) => {
 };
 
 module.exports.getOrders = (req, res, next) => {
-  let ordersData;
-  console.log("orders please!", ordersData)
+  let ordersList;
   const { Order, Product } = req.app.get('models');
   Order.findOne({where: {user_id: req.session.passport.user.id, open_closed: true}})
   .then( (ordersData) => {
-    return ordersData = ordersData.getProducts()
+    // console.log("please work???????", ordersData)
+    ordersList = ordersData;
+    return ordersData.getProducts()
   })
   .then ( (productData) => {
-    console.log("What we expect?????????????", productData, ordersData)
-    res.render('orders', { ordersData, productData });
+    const {dataValues:currentOrder} = ordersList;
+    // console.log("have mercy!!!!", orders)
+    res.render('orders', { currentOrder, productData });
   })
   .catch( (err) => {
     next(err);
+  });
+};
+
+module.exports.putToComplete = (req, res, next) => {
+  console.log("made it to putToComplete function!")
+  const { Order } = req.app.get('models');
+  console.log(req.body.selectval);
+    Order.update({
+    payType_id: req.body.selectval,
+    open_closed: false
+    }, {where: {id: req.params.id}})
+    // Need to add pay type to order
+    .then ( (data) => {
+      res.redirect('/welcome');
+    })
+    .catch( (err) => {
+    next(err);
+    });
+  };
+
+
+module.exports.getToComplete = (req, res, next) => {
+  console.log("made it to getToComplete function!");
+  const { Order, Pay_type } = req.app.get('models');
+  Order.findOne({where: {id: req.params.id, open_closed: true}})
+  .then( (ordersData) => {
+    const {dataValues:orders} = ordersData;
+    req.orders = orders;
+    let orderId = req.orders.id;
+    let payTypes = req.payTypes;
+    res.render('complete-order-form', {orders, payTypes, orderId});
+  })
+};
+
+// Gets PayTypes for completing an order
+// db and ss
+module.exports.getPayTypes = (req, res, next) => {
+  const { Pay_type } = req.app.get('models');
+  Pay_type.findAll({raw: true,
+    where: {
+      user_id: req.session.passport.user.id
+    }
+  })
+  .then( (payTypes) => {
+    req.payTypes = payTypes;
+    next();  
+  })
+  .catch( (err) => {
+    console.log(`Error in getPayTypes`, err);
   });
 };
