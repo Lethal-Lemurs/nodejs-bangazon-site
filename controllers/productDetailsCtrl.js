@@ -2,10 +2,9 @@
 
 module.exports.removeProduct = (req, res, next) => {
   const { Order, Product } = req.app.get('models');
-  console.log('req PRAMAS', req.params.id)
-  Order.destroy({where: {user_id: req.session.passport.user.id, open_closed: true}})
+  Order.findOne({where: {user_id: req.session.passport.user.id, open_closed: true}})
   .then( () => {
-    console.log('I GOT I GOT I GOT ROYALTY GOT LOYALTY INSIDE MY DNA')
+    
     res.render('welcome')
   })
   .catch( (err) => {
