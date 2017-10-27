@@ -10,6 +10,10 @@ block content
           | price: #{prod.price} 
           | qty: #{prod.quantity}
           | desc: #{prod.description}
+          br
+          form(action="/removeProduct", method="POST")
+            input.delbtn(type="submit" value="Remove From Cart")
+            
     //- if message
     //-   h2= message
     //- p Description: #{product.description}

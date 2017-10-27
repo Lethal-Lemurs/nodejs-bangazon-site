@@ -1,5 +1,18 @@
 'use strict';
 
+module.exports.removeProduct = (req, res, next) => {
+  const { Order, Product } = req.app.get('models');
+  console.log('req PRAMAS', req.params.id)
+  Order.destroy({where: {user_id: req.session.passport.user.id, open_closed: true}})
+  .then( () => {
+    console.log('I GOT I GOT I GOT ROYALTY GOT LOYALTY INSIDE MY DNA')
+    res.render('welcome')
+  })
+  .catch( (err) => {
+    console.log('Error with delete order')
+  });
+};
+
 module.exports.getOneProduct = (req, res, next) => {
   const { Product } = req.app.get('models'); 
   Product.findOne({where: {id: req.params.id} })
