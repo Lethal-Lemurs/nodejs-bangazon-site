@@ -26,6 +26,14 @@ module.exports = {
       },
       password: {
         type: Sequelize.STRING
+      },
+      phone: {
+        allowNull: true,
+        type: Sequelize.STRING
+      },
+      address: {
+        allowNull: true,
+        type: Sequelize.STRING
       }
     });
   },
