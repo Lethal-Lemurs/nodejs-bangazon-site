@@ -22,3 +22,6 @@ block content
     //- p Price: $#{product.price}
     //- //- Need to add to Orders
     //- button(type="submit") Add To Order
+
+    form(action="/removeOrder", method="POST")
+      input.delbtn(type="submit" value="Cancel Order")

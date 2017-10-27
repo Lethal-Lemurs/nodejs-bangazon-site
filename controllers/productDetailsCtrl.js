@@ -9,7 +9,18 @@ module.exports.removeProduct = (req, res, next) => {
     res.render('welcome')
   })
   .catch( (err) => {
-    console.log('Error with delete order')
+    console.log('Error with remove product')
+  });
+};
+
+module.exports.removeOrder = (req, res, next) => {
+  const { Order } = req.app.get('models');
+  Order.destroy({where: {user_id: req.session.passport.user.id, open_closed: true}})
+  .then( () => {
+    res.render('welcome')
+  })
+  .catch( (err) => {
+    console.log('Error with remove product')
   });
 };
 
