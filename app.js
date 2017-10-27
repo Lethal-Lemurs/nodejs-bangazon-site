@@ -7,6 +7,8 @@ const passport = require('passport')
 var session = require('express-session');
 let bodyParser = require('body-parser');
 const flash = require('express-flash');
+const methodOverride = require('method-override');
+
 
 require('dotenv').config();
 const port = process.env.PORT || 8080;
@@ -35,6 +37,31 @@ app.use(function(req, res, next) {
   Product_type.findAll({raw: true})
   .then(  (productTypes) => {
     res.locals.prodTypes =  productTypes;
+    next();
+  })
+  .catch( (err) => {
+    next(err);
+  });
+})
+
+// function by Dustin, taught to Dustin by Glen, taught to Glen by Jon
+app.use(function(req, res, next) {
+  const { Product } = req.app.get('models');
+  Product.findAll({raw: true})
+  .then( (products) => {
+    products.sort(function(a, b) {
+      a = new Date(a.date_added);
+      b = new Date(b.date_added);
+      return a>b ? -1 : a<b ? 1 : 0;
+    })
+    if(products.length > 20){
+      let array = [];
+      for(let i = 0; i < 20; i++){
+        array.push(products[i])
+      }
+      products = array;
+    }
+    res.locals.products = products;
     next();
   })
   .catch( (err) => {

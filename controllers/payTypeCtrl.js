@@ -18,12 +18,13 @@ module.exports.postPayType = (req, res, next) => {
     active_inactive: true
   })
   .then( () => {
-    res.render('add-pay.pug', {message: `${req.body.name} payment method added to your account!`})//redirect to the profile or back to addPayment pug?
+    res.redirect('/userProfile');
   })
   .catch( (err) => {
     console.log(`Error in postPayType`, err);
   });
 };
+
 //renders the initial Delete paytypes page with the needed data
 module.exports.getDeletePayTypes = (req, res, next) => {
   const { Pay_type } = req.app.get('models');
@@ -40,6 +41,7 @@ module.exports.getDeletePayTypes = (req, res, next) => {
     console.log(`Error in getDeletePayTypes`, err);
   });
 };
+
 //Deletes the paytype related to the user with the appropriate req.params
 module.exports.deletePayType = (req, res, next) => {
   const { Pay_type } = req.app.get('models');
@@ -49,7 +51,7 @@ module.exports.deletePayType = (req, res, next) => {
     }
   })
   .then( () => {
-    res.redirect('/deletePayType')
+    res.redirect('/userProfile')
   })
   .catch( (err) => {
     console.log(`Error in deletePayType`, err);

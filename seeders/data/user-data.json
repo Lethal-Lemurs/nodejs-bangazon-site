@@ -5,35 +5,45 @@
       "last_name": "Guy",
       "username": "duderG",
       "email": "dudeGuy@hotmail.com",
-      "password": "1234"
+      "password": "$2a$08$ZbH6KW0BCt7sXkjPpI92.OTxtyc3TR4ljUlBLukDexygYIAQd7ACO",
+      "phone": 6155556768,
+      "address": "123 boogie way"
     },
     {
       "first_name": "Frank",
       "last_name": "Reynolds",
       "username": "oshKosh",
       "email": "hezbolah@aol.com",
-      "password": "1234"
+      "password": "$2a$08$ZbH6KW0BCt7sXkjPpI92.OTxtyc3TR4ljUlBLukDexygYIAQd7ACO",
+      "phone": 6156676908,
+      "address": "123 doogie way"
     },
     {
       "first_name": "Bernard",
       "last_name": "Osyrus",
       "username": "BO2017",
       "email": "thehotstuff420@gmail.com",
-      "password": "1234"
+      "password": "$2a$08$ZbH6KW0BCt7sXkjPpI92.OTxtyc3TR4ljUlBLukDexygYIAQd7ACO",
+      "phone": 6152276008,
+      "address": "123 woogie way"
     },
     {
       "first_name": "Laura",
       "last_name": "Davis",
       "username": "flowersandshit",
       "email": "notasoccermom420@gmail.com",
-      "password": "1234"
+      "password": "$2a$08$ZbH6KW0BCt7sXkjPpI92.OTxtyc3TR4ljUlBLukDexygYIAQd7ACO",
+      "phone": 271112908,
+      "address": "123 googie way"
     },
     {
       "first_name": "Jessie",
       "last_name": "Ventura",
       "username": "navysealguy420",
       "email": "hotshotfucka@gmail.com",
-      "password": "1234"
+      "password": "$2a$08$ZbH6KW0BCt7sXkjPpI92.OTxtyc3TR4ljUlBLukDexygYIAQd7ACO",
+      "phone": 7958876911,
+      "address": "123 foogie way"
     }
   ]
 }
