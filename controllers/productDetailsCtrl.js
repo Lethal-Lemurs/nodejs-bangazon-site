@@ -71,7 +71,7 @@ module.exports.putToComplete = (req, res, next) => {
     }, {where: {id: req.params.id}})
     // Need to add pay type to order
     .then ( (data) => {
-      res.json(data);
+      res.redirect('/welcome');
     })
     .catch( (err) => {
     next(err);
