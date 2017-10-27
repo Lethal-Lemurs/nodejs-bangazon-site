@@ -2,7 +2,14 @@ extends index.pug
 
 block content
   h1 User Profile
-
+  a(href='/editProfile') Edit Profile
+  |
+  |
+  a(href="/addPayType") Add payment options
+  |
+  |
+  a(href="/orderHistory") Order History
+  
   each info in userInfo
     h3 #{info.first_name} #{info.last_name}
     ul
@@ -12,14 +19,10 @@ block content
         li Phone: #{info.phone}
       if info.address  
         li Address: #{info.address}
-    a(href='/editProfile') Edit Profile
-    |
-    |
     -break
 
   if message
     h2= message
-  a(href="/addPayType") Add payment options.
 
   h3 Payment Types 
   each info in userInfo

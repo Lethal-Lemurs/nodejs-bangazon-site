@@ -41,7 +41,6 @@ module.exports.displayNewProductForm = (req, res, next) => {
   const { Product_type } = req.app.get('models');
   Product_type.findAll()
   .then( (product_types) => {
-    console.log('prod type stuff', product_types);
     res.render('create-product', {
       product_types
     });
@@ -53,11 +52,12 @@ module.exports.displayNewProductForm = (req, res, next) => {
 
 module.exports.postProduct = (req, res, next) => {
   const { Product } = req.app.get('models');
+  let newPrice = Number(req.body.price);
   Product.create({
     date_added: new Date(),
     name: req.body.name,
     description: req.body.description,
-    price: req.body.price,
+    price: newPrice,
     quantity: req.body.quantity,
     type_id: req.body.selectval,
     user_id: req.session.passport.user.id
