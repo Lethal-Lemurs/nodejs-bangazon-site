@@ -1,7 +1,5 @@
-//- extends index.pug
 include ./partials/nav
 block content
-    //- - console.log("PUUUUUUUUUUUGGGGGGGGGGGGGGG", orders)
     h1 Orders
       ul
         each prod in productData
@@ -10,6 +8,10 @@ block content
           | price: #{prod.price} 
           | qty: #{prod.quantity}
           | desc: #{prod.description}
+          br
+          form(action="/removeProduct", method="POST")
+            input.delbtn(type="submit" value="Remove From Cart")
+            
     //- if message
     //-   h2= message
     //- p Description: #{product.description}
@@ -18,3 +20,6 @@ block content
     //- p Price: $#{product.price}
     //- //- Need to add to Orders
     //- button(type="submit") Add To Order
+
+    form(action="/removeOrder", method="POST")
+      input.delbtn(type="submit" value="Cancel Order")

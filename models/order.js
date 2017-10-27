@@ -1,8 +1,8 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var Order = sequelize.define('Order', {
-    // user_id: DataTypes.INTEGER,
-    // payType_id: DataTypes.INTEGER,
+    user_id: DataTypes.INTEGER,
+    payType_id: DataTypes.INTEGER,
     open_closed: DataTypes.BOOLEAN
   }, 
   {underscored: true, timestamps: false});
