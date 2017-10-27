@@ -11,7 +11,6 @@ module.exports.getProfile = (req, res, next) => {
     }]
   })
   .then( (userInfo) => {
-    console.log("??", userInfo);
     if (req.url === '/editProfile') {
       res.render('profile-edit', { userInfo });
     } else {
@@ -24,7 +23,6 @@ module.exports.getProfile = (req, res, next) => {
 };
 
 module.exports.saveProfileEdit = (req, res, next) => {
-  console.log("2");
   const { User } = req.app.get('models');
   User.update({
     first_name: req.body.first_name,
