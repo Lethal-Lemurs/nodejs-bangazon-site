@@ -1,0 +1,29 @@
+extends index.pug
+
+block content
+  h1 Edit Profile
+
+  each user in userInfo
+    form(method='POST' action='/editProfile/?_method=PUT')
+      label(for='first_name') User First Name:
+      input(value=user.first_name, type='text', name='first_name', placeholder=user.first_name)
+      br
+      label(for='last_name') User Last Name:
+      input(value=user.last_name, type='text', name='last_name', placeholder=user.last_name)
+      br
+      label(for='username') User username:
+      input(value=user.username, type='text', name='username', placeholder=user.username)
+      br
+      label(for='email') User email:
+      input(value=user.email, type='text', name='email', placeholder=user.email)
+      br
+      label(for='phone') User phone:
+      input(value=user.phone, type='text', name='phone', placeholder=user.phone)
+      br
+      label(for='address') User address:
+      input(value=user.address, type='text', name='address', placeholder=user.address)
+      br
+      button#button(type='submit') Save Changes
+
+
+
