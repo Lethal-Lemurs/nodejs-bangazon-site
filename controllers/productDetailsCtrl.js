@@ -3,6 +3,29 @@
 
 let currentOrder;
 
+module.exports.removeProduct = (req, res, next) => {
+  const { Order, Product } = req.app.get('models');
+  Order.findOne({where: {user_id: req.session.passport.user.id, open_closed: true}})
+  .then( () => {
+    
+    res.render('welcome')
+  })
+  .catch( (err) => {
+    console.log('Error with remove product')
+  });
+};
+
+module.exports.removeOrder = (req, res, next) => {
+  const { Order } = req.app.get('models');
+  Order.destroy({where: {user_id: req.session.passport.user.id, open_closed: true}})
+  .then( () => {
+    res.redirect('/welcome')
+  })
+  .catch( (err) => {
+    console.log('Error with remove product')
+  });
+};
+
 module.exports.getOneProduct = (req, res, next) => {
   const { Product } = req.app.get('models'); 
   Product.findOne({where: {id: req.params.id} })
